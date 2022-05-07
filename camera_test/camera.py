@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.8
 # encoding: utf-8
 import cv2
 import numpy as np
@@ -21,9 +21,10 @@ if __name__ == '__main__':
     #cap = cv2.VideoCapture("./Data/WeChat_20220402195624.mp4")
     #cap = cv2.VideoCapture("./Data/WeChat_20220402195648.mp4")
     rospy.init_node('talker', anonymous=True)
-    theta_pub = rospy.Publisher('theta_pub', Float64, queue_size=1)
+    theta_pub = rospy.Publisher('bottomRight_X', Float64, queue_size=1)
     #cap = cv2.VideoCapture(1)
-    cap = cv2.VideoCapture("./zoulang.mp4")
+    # cap = cv2.VideoCapture("./zoulang.mp4")
+    cap = cv2.VideoCapture(4)
 
     n = 1
     rate = rospy.Rate(10) # 10hz
@@ -45,6 +46,7 @@ if __name__ == '__main__':
         msg = Float64()
         if len(bottompointright) == 0:
             msg.data = -1.0
+            theta_pub.publish(msg)
         else:
             msg.data = bottompointright[0]
             theta_pub.publish(msg)

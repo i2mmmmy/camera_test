@@ -12,7 +12,8 @@ if __name__ == '__main__':
     #cap = cv2.VideoCapture("./Data/WeChat_20220402195648.mp4")
 
     #cap = cv2.VideoCapture(1)
-    cap = cv2.VideoCapture("./zoulang.mp4")
+    # cap = cv2.VideoCapture("./zoulang.mp4")
+    cap = cv2.VideoCapture(4)
 
     n = 1
     while cap.isOpened():
